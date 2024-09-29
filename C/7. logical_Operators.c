@@ -1,5 +1,5 @@
 /*
-Logical Operators:
+Logical Operators:-
 
 Operator	Meaning	        
 &&	        Logical AND. True only if all operands are true
