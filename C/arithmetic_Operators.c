@@ -6,7 +6,6 @@ Arithmetic Operators in C
 * (multiplication), 
 / (division), and 
 % (modulus or modulo) note: remainder after division
-
 */
 
 #include <stdio.h>
