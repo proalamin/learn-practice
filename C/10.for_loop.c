@@ -8,9 +8,11 @@ for(initialization; condition; update){
 
 int main(){
     
-    for(int i=0; i<3; i++){
-        printf("inside loop\n");
+    // print to 1 to 10 
+    for(int i=1; i<=10; i++){
+        printf("value of i= %d\n", i);
     }
+    printf("outside for loop\n");
 
     return 0;
 }
