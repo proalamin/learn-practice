@@ -23,9 +23,9 @@ unsigned long long int %llu
 #include <stdio.h> 
 
 int main(){
-    int a, b, c;
-    scanf("%d %d %d", &a, &b, &c);
-    printf("a= %d b=%d c= %d", a, b, c);
+    int a, b, c, d;
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+    printf("a= %d b= %d c= %d d= %d", a, b, c, d);
 
     return 0;
 }
