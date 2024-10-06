@@ -120,9 +120,7 @@ The ASCII (American Standard Code for Information Interchange) table is a charac
 | 112 | 70  | p    | Lowercase p                |
 | 113 | 71  | q    | Lowercase q                |
 | 114 | 72  | r    | Lowercase r                |
-| 115
-
- | 73  | s    | Lowercase s                |
+| 115 | 73  | s    | Lowercase s                |
 | 116 | 74  | t    | Lowercase t                |
 | 117 | 75  | u    | Lowercase u                |
 | 118 | 76  | v    | Lowercase v                |
