@@ -17,6 +17,26 @@ int main(){
         printf("%d ", a[i]);
     }
 
+    printf("\n");
+
+    // sum of an array
+    int x;
+    scanf("%d", &x);
+
+    int y[x];
+
+    for(int i=0; i<x; i++){
+        scanf("%d", &y[i]);
+    }
+
+    int sum=0;
+    for(int i=0; i<x; i++){
+        sum +=a[i];
+    }
+    printf("array sum answer is- %d\n", sum);
+
+    double avg = (double)sum / x;
+    printf("avg- %llf", avg);
 
     return 0;
 }
