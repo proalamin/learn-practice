@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include<limits.h>
+
 
 int main(){ 
 
@@ -36,7 +38,25 @@ int main(){
     printf("array sum answer is- %d\n", sum);
 
     double avg = (double)sum / x;
-    printf("avg- %llf", avg);
+    printf("avg- %llf\n", avg);
+
+
+    // min and max
+    int d[7]={3,5,9,3,2,1,8};
+
+    int min= INT_MAX, max=INT_MIN;
+
+    for(int i=0; i<7; i++){
+        if(d[i] < min){
+            min=d[i];
+        }
+
+        if(d[i] > max){
+            max=d[i];
+        }
+    }
+    printf("min - %d\nmax- %d", min,max);
+
 
     return 0;
 }
