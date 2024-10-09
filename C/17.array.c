@@ -9,7 +9,13 @@ int main(){
 
     int c[]={3,5}; // here array size is 2
 
+    // array input output
+    int n[5];
 
+    for(int i=0; i<5; i++){
+        scanf("%d", &a[i]);
+        printf("%d\n", &a[i]);
+    }
 
 
     return 0;
