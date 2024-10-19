@@ -16,7 +16,6 @@ int main(){
 
     for(int i=0; i<5; i++){
         scanf("%d", &a[i]);
-        printf("%d ", a[i]);
     }
 
      for(int i=0; i<5; i++){
