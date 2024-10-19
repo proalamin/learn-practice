@@ -19,6 +19,10 @@ int main(){
         printf("%d ", a[i]);
     }
 
+     for(int i=0; i<5; i++){
+        printf("%d ", a[i]);
+    }
+
     printf("\n");
 
     // sum of an array
