@@ -11,10 +11,12 @@ int main(){
         scanf("%d", &a[i]);
     }
 
+    // reverse and a to b
     for(int i=0, j=length-1; i<length; i++, j--){
         b[j]=a[i];
     }
 
+    // again b to a
     for(int i=0; i<length; i++){
         a[i]=b[i];
     }
