@@ -1,30 +1,31 @@
 #include<stdio.h>
-int a[100000];
 
 int main(){
-    int length;
+    int a[100000], b[100000];
+    int len;
+    scanf("%d", &len);
 
-    scanf("%d", &length);
-
-    for(int i=0; i<length; i++){
+    for(int i=0; i<len; i++){
         scanf("%d", &a[i]);
     }
 
-    int index, value;
+//1 2 3 4
+//2 30 ->hear 2 index and value 30
+//1 2 30 3 4 
+
+    int index,value;
     scanf("%d %d", &index, &value);
 
-    length++;
-
-    for(int i=length -1; i>=index; i--){
+    len++;
+    for(int i=len-1; i>=index; i--){
         a[i+1]=a[i];
     }
-
     a[index]=value;
 
-    for(int i=0; i<length; i++){
+    
+    for(int i=0; i<len; i++){
         printf("%d ", a[i]);
     }
 
-
-
+    return 0;
 }
