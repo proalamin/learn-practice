@@ -17,4 +17,5 @@ int main(){
     cout << (int)name << endl; // output asci value bcz there type casting
 
     return 0;
+    
 }

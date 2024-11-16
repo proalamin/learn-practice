@@ -9,4 +9,5 @@ int main(){
     std :: cout << id <<std::endl << name <<std::endl<< cg <<std::endl;
 
     return 0;
+    
 }
