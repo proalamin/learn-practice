@@ -7,6 +7,7 @@ int main(){
 
     int *p= new int;
     *p=11;
+    delete p; // if want to delete dynamic variable use "delete" keyword
     cout << *p << endl;
 
     return 0;
