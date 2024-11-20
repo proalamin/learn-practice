@@ -7,6 +7,7 @@ class Student{
     int cls;
     double gpa;
 
+    // if we want constructor function variable name same then use this or arrow sign
     Student(int roll, int cls, double gpa){
         (*this).roll =roll;
         // this->roll=roll;
