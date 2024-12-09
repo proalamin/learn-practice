@@ -1,0 +1,9 @@
+time complexity-
+An algorithm's time complexity specifies how long it will take to execute an algorithm as a function of its input size.
+
+What is Big O?
+Big O, also known as Big O notation, represents an algorithm's worst-case complexity. It uses algebraic terms to describe the complexity of an algorithm.  
+
+more - https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/#:~:text=O(n).-,Linear%20Time%3A%20O(n),of%20order%20O(n).
+
+
