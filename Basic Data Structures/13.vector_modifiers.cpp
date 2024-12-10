@@ -3,6 +3,7 @@ Vector Built-in Functions:
 https://docs.google.com/document/d/1nxpbS-5RKFSwcJ6mHv3P2Vru9HTqXOeB/edit
 */
 
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -26,7 +27,6 @@ int main(){
     }else{
         cout << "found";
     }
-
 
     for(int x : v){
         cout << x << " ";
