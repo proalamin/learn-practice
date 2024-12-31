@@ -46,5 +46,6 @@ int main(){
     print_forward(head);
     print_backward(tail);
 
+    
     return 0;
 }
