@@ -29,7 +29,7 @@ void delete_at_head(Node* &head, Node* &tail){
     delete deletenode;
     
     if(head == NULL){
-        tail=deletenode;
+        tail=NULL;
         return;
     }
     head->prev=NULL;
