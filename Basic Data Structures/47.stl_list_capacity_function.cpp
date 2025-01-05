@@ -1,12 +1,15 @@
 /*
-Capacity-
-	
+List Built-in Functions: 
+https://docs.google.com/document/d/1IbS-qmFx6oRO-GyIG55yavdDUHpfHTNM/edit
+
+Capacity-	
 Name                Details                                             Time Complexity
 myList.size()       Returns the size of the list.                       O(1)
 myList.max_size()   Returns the maximum size that the list can hold.    O(1)
 myList.clear()      Clears the list elements.                           O(N)
 myList.empty()      Return true/false if the list is empty or not.      O(1)
 myList.resize()     Change the size of the list.                        O(K); where K is the difference between new size and current size.
+
 
 */
 
