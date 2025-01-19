@@ -33,7 +33,7 @@ Node* input_tree()
         cin >> l >> r;
         Node *myLeft , *myRight;
         if(l == -1) myLeft = NULL;
-        else myLeft = new Node(1);
+        else myLeft = new Node(l);
         if(r == -1) myRight = NULL;
         else myRight = new Node(r);
 
