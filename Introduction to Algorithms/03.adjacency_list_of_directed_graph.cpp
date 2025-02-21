@@ -12,10 +12,8 @@ int main(){
         int a, b;
         cin >> a >>b;
         adj_list[a].push_back(b);
-        adj_list[b].
-        push_back(a);
+        adj_list[b].push_back(a);
     }
-    
     for(int i=0; i<n; i++){
         cout << i << "->";
         for(int x : adj_list[i]){
