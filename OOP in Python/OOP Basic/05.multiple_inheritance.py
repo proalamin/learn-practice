@@ -29,4 +29,4 @@ apple_watch =SmartWatch('apple', 'watch 4', 24333)
 print(apple_watch.brand, apple_watch.model, apple_watch.price)
 
 
-# MRO - method rajulation order
+# MRO - method resolution order
