@@ -22,4 +22,28 @@ class Library:
         self.users=[]
         self.books=[]
 
+    def addBooks(self, id, name, quan):
+        
+        for book in self.books:
+            if book.id == id:
+                print('this book already exists')
+                return
+
+        books = Book(id, name, quan)
+        self.books.append(books)
+
+        print(f'{book.name} is successfully added')
+
+
+    def add_user(self, id, name, pas):
+
+        for user in self.users:
+            if user.id == id:
+                print('already you are a user')
+                return
+
+        user = User(id, name, pas)
+        self.users.append(user)
+
+        print('f{user.name} new user added')
     
