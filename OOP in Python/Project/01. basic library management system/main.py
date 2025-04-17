@@ -1,8 +1,8 @@
 class Book:
 
-    def __init__(self, name, id, quantity):
-        self.name= name
+    def __init__(self, id, name, quantity):
         self.id = id
+        self.name= name
         self.quantity = quantity
 
 
@@ -29,10 +29,12 @@ class Library:
                 print('this book already exists')
                 return
 
-        books = Book(id, name, quan)
-        self.books.append(books)
+        book = Book(id, name, quan)
+        self.books.append(book)
 
-        print(f'{book.name} is successfully added')
+        print(f"new book added : {book.name} ")
+
+        return book
 
 
     def add_user(self, id, name, pas):
@@ -45,8 +47,9 @@ class Library:
         user = User(id, name, pas)
         self.users.append(user)
 
-        print('f{user.name} new user added')
-    
+        print(f"new user added : {user.name} ")
+
+        return user
 
     def borrowBook(self, user, bookId, date):
 
@@ -81,3 +84,8 @@ class Library:
         print(f'not sound this book id {bookId}')
 
 
+myLibrary = Library('my library')
+admin = myLibrary.add_user(1,'admin', "pass")
+user2 = myLibrary.add_user(2, 'user 2', '22222')
+
+dsa = myLibrary.addBooks(1, 'data structure and algorithm', 700)
