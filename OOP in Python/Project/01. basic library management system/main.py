@@ -17,7 +17,7 @@ class User:
 
 class Library:
 
-    def __init__(self, name, password):
+    def __init__(self, name):
         self.name= name
         self.users=[]
         self.books=[]
@@ -47,3 +47,37 @@ class Library:
 
         print('f{user.name} new user added')
     
+
+    def borrowBook(self, user, bookId, date):
+
+        for book in self.books:
+            if book.id == bookId:
+                if book in user.borrowedBooks:
+                    print('already this book borrowed')
+                    return
+                elif book.quantity < 1:
+                    print('now available copies')
+                    return
+                else:
+                    user.borrowedBooks.append(book)
+                    book.quantity -=1
+                    print('borrowed successfully')
+                    return
+        print(f'not sound this book id {bookId}')
+    
+
+    def returnBook(self, user, bookId, date):
+
+        for book in self.books:
+            if book.id == bookId:
+                if book in user.borrowedBooks:
+                    book.quantity +=1
+                    user.borrowedBooks.remove(book)
+                    user.returnedBooks.append(book)
+                    return
+                else:
+                    print('you did now borrow this book')
+                    return
+        print(f'not sound this book id {bookId}')
+
+
