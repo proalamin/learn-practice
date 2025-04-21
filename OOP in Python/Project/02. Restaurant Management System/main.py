@@ -7,6 +7,7 @@ from orders import Order
 mamar_res = Restaurant("Mamar Restaurant")
 
 def cusmtomer_menu():
+    print("You ara a customer...")
     name = input("enter your name: ")
     email= input("enter your email: ")
     phone = input("enter your phone: ")
@@ -40,6 +41,7 @@ def cusmtomer_menu():
             print("invalid input")
 
 def admin_menu():
+    print("You ara a admin...")
     name = input("enter your name: ")
     email= input("enter your email: ")
     phone = input("enter your phone: ")
@@ -72,7 +74,8 @@ def admin_menu():
             age = input("enter employee age: ")
             salary = input("enter employee salary: ")
             address = input("enter employee address: ")
-            admin.add_employee(name, email, phone, address, age, designation, salary)
+            employee= Employee(name, email, phone, address, age, designation, salary)
+            admin.add_employee(mamar_res, employee)
 
         elif choice == 3:
             admin.view_employee(mamar_res)
@@ -88,3 +91,19 @@ def admin_menu():
             break
         else:
             print("invalid input")
+
+while True:
+    print("Welcome....")
+    print("1. Customer")
+    print("2. Admin")
+    print("3. Exit")
+
+    choice = int(input("enter your choice: "))
+    if choice == 1:
+        cusmtomer_menu()
+    elif choice == 2:
+        admin_menu()
+    elif choice == 3:
+        break
+    else:
+        print("invalid input")
