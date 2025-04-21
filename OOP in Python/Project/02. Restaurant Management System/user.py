@@ -28,10 +28,17 @@ class Admin(User):
     def view_employee(self, restaurant):
         restaurant.view_employee()
 
+    def add_new_item(self, restaurant, item):
+        restaurant.menu.add_menu_item(item)
+    
+    def del_item(self, restaurant, item):
+        restaurant.menu.remove_item(item)
+
 class Restaurant:
     def __init__(self, name):
         self.name= name
         self.employees = [] #database for all employee
+        self.menu = FoodItem()
 
     def add_employee(self, employee):
         self.employees.append(employee)
@@ -65,14 +72,32 @@ class Menu:
         else:
             print("item not found")
 
+    def show_menu(self):
+        print("-----> Menu <-----")
+        print("Name\tPrice\tQuantity")
+        for item in self.items:
+            print(f"{item.name}\t{item.price}\t{item.quantity}")
+
+class FoodItem:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price= price
+        self.quantity= quantity
+
+
+
+
 res = Restaurant('mamar hotel')
+
 admin = Admin("admin", "admin@me.com", 21121, "dhaka")
-
-
 e1 = Employee("e1", "e1@me.com", 322323, "lalbag", 27, "head-chef", 55353533)
 
 admin.add_employee(res, e1)
-
 admin.view_employee(res)
+
+mn= Menu()
+item = FoodItem("pizza", 999, 50)
+mn.add_menu_item(item)
+mn.show_menu()
 
 
