@@ -3,8 +3,6 @@ create database people;
 show databases;
 use people;
 
--- drop database people; -- delete database
-
 -- create operation
 
 create table people(
@@ -24,6 +22,7 @@ insert into people
 values(2, "mr. V", "v@v.v", 32234);
 
 select * from people;
+select name from people;
 
 
 -- update operation
@@ -40,5 +39,13 @@ where name= "mr. vx";
 set sql_safe_updates =1;
 
 
+-- delete operation
+delete from people
+where id=3;
 
+
+-- drop
+
+-- drop database people; -- delete database
+-- drop table people; -- -- delete table
 
