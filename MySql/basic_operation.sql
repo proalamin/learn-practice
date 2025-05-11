@@ -16,7 +16,6 @@ create table people(
 
 drop table people;
 
-
 -- insert operation
 insert into people(id, name, email, salary)
 values(1, "jon", "jon232@gmail.com", 32322);
@@ -25,6 +24,21 @@ insert into people
 values(2, "mr. V", "v@v.v", 32234);
 
 select * from people;
+
+
+-- update operation
+update people
+set name="mr. vx"
+where id=2;
+
+set sql_safe_updates =0;  -- safe update mode of
+
+update people
+set salary= 3434333
+where name= "mr. vx";
+
+set sql_safe_updates =1;
+
 
 
 
