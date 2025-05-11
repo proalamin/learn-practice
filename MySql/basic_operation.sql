@@ -16,3 +16,15 @@ create table people(
 
 drop table people;
 
+
+-- insert operation
+insert into people(id, name, email, salary)
+values(1, "jon", "jon232@gmail.com", 32322);
+
+insert into people
+values(2, "mr. V", "v@v.v", 32234);
+
+select * from people;
+
+
+
