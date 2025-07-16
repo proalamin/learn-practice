@@ -1,1 +1,4 @@
-solve...
+alamin 15 99
+aminnn 26 99
+aminnn 27 96
+aminn 21 93

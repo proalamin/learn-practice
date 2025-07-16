@@ -1,1 +1,5 @@
-1 2 3
+4
+alamin 15 99
+aminn 21 93
+aminnn 27 96
+aminnn 26 99
