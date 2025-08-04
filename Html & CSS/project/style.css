@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: rgb(206, 246, 246);
+}
+
+nav{
+    display: flex;
+    background-color: aliceblue;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo{
+    width: 80px;
+}
+
+li{
+    list-style: none;
+    font-size: 20px;
+}
+
+.menu-cont{
+    display: flex;
+    gap: 20px;
+}
+
+li:hover{
+    color:blue;
+    cursor: pointer;
+}
