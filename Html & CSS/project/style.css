@@ -33,3 +33,44 @@ li:hover{
     color:blue;
     cursor: pointer;
 }
+
+.banner-img{
+    width: 350px;
+}
+
+.banner-cont{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin: auto; */
+    /* width: 100%; */
+}
+
+.banner-left{
+    width: 400px;
+    line-height: 1.5;
+    
+}
+.btn{
+    padding: 12px 18px;
+    border-radius: 9px;
+    border: 2px solid black;
+    color: white;
+    cursor: pointer;
+}
+
+.hire-btn{
+    background-color: rgb(37, 244, 244);
+    color: black    ;
+}
+
+.project-btn{
+    background-color: aquamarine;
+    color: black;
+}
+.title{
+    font-size: 45px;
+}
+.title-2{
+    font-size: 25px;
+}
