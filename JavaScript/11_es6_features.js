@@ -107,6 +107,31 @@ student.contact?.phone; // undefined (no error)
 
 
 // --------------------------------
+// find and filter
+// --------------------------------
+
+const products =[
+  {id:1, name:"p1", price:121},
+  {id:2, name:"p2", price:122},
+  {id:3, name:"p3", price:121},
+]
+
+const result= products.find(products=>products.price==121);
+console.log(result); // if not found output undefined
+
+
+const result1= products.filter(products=>products.price==13321);
+console.log(result1); // if not true output is empty array
+
+
+const id_sum= products.map(product=> product.id*2);
+console.log(id_sum);
+
+
+const id_sum1= products.forEach(product=> product.id*2);
+console.log(id_sum1); // not return 
+
+// --------------------------------
 // Nullish Coalescing
 // --------------------------------
 
@@ -118,15 +143,11 @@ const value = null ?? "default value";
 // --------------------------------
 
 // export
-export const version = "ES6";
+// export const version = "ES6";
 
 // import
 // import { version } from "./file.js";
 
-
-// --------------------------------
-// Best Practices
-// --------------------------------
 
 // Use const by default
 // Prefer arrow functions for small logic
