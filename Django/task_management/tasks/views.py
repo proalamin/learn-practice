@@ -6,7 +6,7 @@ def home(request):
     #transform data
     # data pass
     # http response / JSON response
-    return HttpResponse('this views from task')
+    return HttpResponse('this views from task --> home')
 
 
 def show_task(request):
@@ -15,3 +15,6 @@ def show_task(request):
 
 def new_task(request):
     return HttpResponse('this is new task page')
+
+def task_id(request, id):
+    return HttpResponse(f'this is new task page {id}')
