@@ -40,3 +40,11 @@ def update(req):
     # return HttpResponse(f"user name -{name} and age is {age}, id-{id}")
     return redirect('views')
 
+
+
+def delate_single_user(req, id):
+    user = get_object_or_404(User, id=id)
+    user.delete()
+    return redirect('views')
+
+    # return HttpResponse(f"delete user id is {id}")

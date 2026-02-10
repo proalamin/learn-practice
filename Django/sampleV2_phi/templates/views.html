@@ -1,34 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>View Data</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <h2>User List</h2>
 
     <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Action</th>
-            <th>Action</th>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+        <th>Action</th>
+      </tr>
+      {% for data in allData %}
+      <tr>
+        <th>{{data.id}}</th>
+        <th>{{data.user_name}}</th>
+        <th>{{data.user_age}}</th>
+        <th><a href="{% url 'edit_data' data.id %}">Edit</a></th>
+        {% comment %}
+        <th><a href="{% url 'delate_single_user' data.id %}">Delete</a></th>
+        {% endcomment %}
 
-        </tr>
-        {% for data in allData %}
-            <tr>
-                <th>{{data.id}}</th>
-                <th>{{data.user_name}}</th>
-                <th>{{data.user_age}}</th>
-                <th><a href="{% url 'edit_data' data.id %}">Edit</a></th>
-                <th><a href="{% url 'edit_data' data.id %}">Delete</a></th>
-
-            </tr>
-        {% endfor %}
-        
-
+        <th><a href="{% url 'delate_single_user' data.id %}"
+          onclick="return confirm('Are you sure you want to delete?');">
+          Delete
+        </a></th>
+      </tr>
+      {% endfor %}
     </table>
-
-</body>
+  </body>
 </html>
