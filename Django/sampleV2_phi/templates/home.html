@@ -1,73 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Styled Form</title>
+  <title>Add User</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      width: 320px;
+    }
 
-        .form-container {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    button:hover {
+      background: #4338ca;
+    }
+  </style>
 </head>
-
 <body>
 
-    <div class="form-container">
-        <h2>User Form</h2>
+  <div class="form-box">
+    <h2>Add User</h2>
 
-        <form method="post" action="{% url 'insertData' %} ">
-            {% csrf_token %}
-            <label>Name:</label>
-            <input type="text" name="name" required>
+    <form method="post" action="{% url 'insertData' %}">
+      {% csrf_token %}
 
-            <label>Age:</label>
-            <input type="number" name="age" required>
+      <label>Name</label>
+      <input type="text" name="name" required>
 
-            <button type="submit">Submit</button>
+      <label>Age</label>
+      <input type="number" name="age" required>
 
-        </form>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
 </body>
 </html>
+
