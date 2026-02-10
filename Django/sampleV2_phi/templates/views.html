@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Data</title>
+</head>
+<body>
+
+    <h2>User List</h2>
+
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Action</th>
+            <th>Action</th>
+
+        </tr>
+        {% for data in allData %}
+            <tr>
+                <th>{{data.id}}</th>
+                <th>{{data.user_name}}</th>
+                <th>{{data.user_age}}</th>
+                <th><a href="{% url 'edit_data' data.id %}">Edit</a></th>
+                <th><a href="{% url 'edit_data' data.id %}">Delete</a></th>
+
+            </tr>
+        {% endfor %}
+        
+
+    </table>
+
+</body>
+</html>
