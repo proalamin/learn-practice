@@ -1,0 +1,19 @@
+* {
+      font-family: "Poppins", sans-serif;
+
+}
+.font-bangla{
+      font-family: "Hind Siliguri", sans-serif;
+
+}
+
+/* Keep scrolling enabled, hide the visible scrollbar
+html,
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+} */
