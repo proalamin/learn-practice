@@ -17,3 +17,8 @@ body {
 body::-webkit-scrollbar {
     display: none;
 } */
+
+.active{
+    background-color: blue;
+    color: white;
+}
