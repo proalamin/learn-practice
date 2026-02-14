@@ -24,7 +24,8 @@ const removeActive=()=>{
 };
 
 const loadLevelWord = (id) => {
-  console.log(`id - ${id}`);
+  manageSpinner(true);
+  // console.log(`id - ${id}`);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -50,11 +51,13 @@ const displayLevelWorld = (words) => {
                     </div>
     `;
     // alert("t");
+    manageSpinner(false);
+
     return;
   }
 
   words.forEach((word) => {
-    console.log(word);
+    // console.log(word);
     const cardDiv = document.createElement("div");
     cardDiv.innerHTML = `
         <div class="space-y-4 rounded-xl bg-white px-4 py-10 text-center shadow-sm sm:px-5 md:py-12">
@@ -62,7 +65,7 @@ const displayLevelWorld = (words) => {
                         <p class="text-sm font-semibold text-zinc-500 md:text-base">Meaning / Pronounciation</p>
                         <div class="font-bangla text-xl font-medium text-zinc-600 md:text-2xl">"${word.meaning ? word.meaning : "আর্থ পাওয়া যায় নি" } / ${word.pronunciation ? word.pronunciation : "উচ্চারণ পাওয়া যায় নি"}"</div>
                         <div class="flex justify-between items-center">
-                            <button class="btn-primary rounded-md bg-[#1A91FF40] px-3 py-2 hover:bg-[#1A91FF70] md:px-4">
+                            <button onclick="loadWordDetails(${word.id})" class="btn-primary rounded-md bg-[#1A91FF40] px-3 py-2 hover:bg-[#1A91FF70] md:px-4">
                                 <i class="fa-solid fa-circle-info"></i>
                             </button>
                             <button class="btn-primary rounded-md bg-[#1A91FF40] px-3 py-2 hover:bg-[#1A91FF70] md:px-4">
@@ -73,8 +76,40 @@ const displayLevelWorld = (words) => {
         `;
     wordsContainer.append(cardDiv);
   });
+
+    manageSpinner(false);
 };
 
+const loadWordDetails = async(id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  console.log(data.data);
+  disPlayWordDetails(data.data);
+}; 
+
+const disPlayWordDetails = (word) => {
+  my_modal_5.showModal(word);
+  const modalTitle = document.querySelector("#my_modal_5 .modal-box h3");
+  const modalBody = document.querySelector("#my_modal_5 .modal-box p");
+
+  modalTitle.innerText = word.word;
+  modalBody.innerText = `Meaning: ${word.meaning} \n Pronunciation: ${word.pronunciation} \n Example:\n ${word.sentence
+ ? word.sentence
+ : "উদাহরণ পাওয়া যায় নি"}`;
+};
+
+
+const manageSpinner=(status)=>{
+  if(status==true){
+    document.getElementById("spiner").classList.remove("hidden");
+    document.getElementById("word-container").classList.add("hidden");
+  }else{
+    document.getElementById("spiner").classList.add("hidden");
+    document.getElementById("word-container").classList.remove("hidden");
+  }
+}
 // {
 //     "id": 5,
 //     "level": 1,

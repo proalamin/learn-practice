@@ -16,6 +16,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body class="m-0 overflow-x-hidden bg-[#ffffff] font-['Poppins',sans-serif] text-slate-900">
@@ -116,6 +118,14 @@
 
                 </div>
 
+                <section id="spiner" class="flex justify-center items-center py-4 hidden">
+                    <span class="loading loading-bars loading-xs"></span>
+                    <span class="loading loading-bars loading-sm"></span>
+                    <span class="loading loading-bars loading-md"></span>
+                    <span class="loading loading-bars loading-lg"></span>
+                    <span class="loading loading-bars loading-xl"></span>
+                </section>
+
                 <!-- words cards  -->
                 <section id="word-container"
                     class="my-10 mx-auto grid w-full grid-cols-1 gap-5 rounded-2xl bg-gray-100 p-4 sm:w-11/12 sm:p-6 md:grid-cols-2 lg:grid-cols-3 lg:p-10">
@@ -126,7 +136,7 @@
                         <h2 class="font-bangla text-4xl font-semibold">একটি Lesson Select করুন।</h2>
                     </div>
 
-                    
+
                 </section>
             </section>
 
@@ -179,6 +189,21 @@
             </div>
         </footer>
     </div>
+    <span class="loading loading-bars loading-xl"></span>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="my_modal_5" class="modal modal-middle">
+        <div class="modal-box py-4">
+            <h3 class="text-lg font-bold"></h3>
+            <p class="py-4"></p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn-primary rounded-md active px-3 py-2">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>

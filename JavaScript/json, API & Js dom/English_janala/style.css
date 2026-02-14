@@ -22,3 +22,21 @@ body::-webkit-scrollbar {
     background-color: blue;
     color: white;
 }
+
+/* Center native dialog modal */
+/* #my_modal_5 {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: min(92vw, 520px);
+    margin: auto;
+}
+
+#my_modal_5::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+#my_modal_5 .modal-box {
+    background: #fff;
+    padding: 1rem;
+} */
