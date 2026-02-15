@@ -2,7 +2,13 @@ from django.db import models
 
 # Create your models here.
 
+class Project(models.Model):
+    name = models.CharField(max_length=100)
+    start_date = models.DateField()
+
+
 class Task(models.Model):
+    project = models.ForeignKey("Project", on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=255)
     description =models.TextField()
     due_date= models.DateField()
