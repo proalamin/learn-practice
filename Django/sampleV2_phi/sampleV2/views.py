@@ -13,16 +13,42 @@ from django.conf import settings
 def generate_6_digit_code():
     return random.randint(100000, 999999)
 
-def send_email_otp(u_email, otp):
+
+def send_email_otp(u_email, otp,id):
+    otp = otp
+    verification_url = f"http://127.0.0.1:8000/verify/{id}/"
+
     send_mail(
-        subject=f"OTP Verification - {otp}",
-        message=f"Your OTP is {otp}. It will expire in 5 minutes.",
+        subject="OTP Verification",
+        message=f"""
+        Hello,
+        Your OTP is: {otp}
+        It will expire in 5 minutes.
+
+        Click below to verify:
+        {verification_url}
+        """,
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[u_email],
         fail_silently=False,
     )
-    return HttpResponse("send")
-    
+
+def verify_email(req, id):
+    user = get_object_or_404(User, id=id)
+    return render(req, "verify.html", {"user": user})
+
+def verify_otp(req, user_id):
+    if req.method == "POST":
+        input_otp = req.POST.get("otp")
+        user = get_object_or_404(User, id=user_id)
+
+        if str(user.otp) == str(input_otp):
+            user.status = True
+            user.save()
+            return HttpResponse("✅ Verification Successful!")
+        else:
+            return HttpResponse("❌ Wrong OTP")
+
 
 def insert_data(req):
     name=req.POST.get('name')
@@ -32,8 +58,10 @@ def insert_data(req):
     # return HttpResponse({opt})
     
     store_user_data=User(user_name=name, user_age=age, email=email, otp=otp)
-    send_email_otp(email, otp)
     store_user_data.save()
+    id=store_user_data.id
+    send_email_otp(email, otp, id)
+
     
     # return HttpResponse(f"user name -{name} and age is {age}")
     return redirect('views')
