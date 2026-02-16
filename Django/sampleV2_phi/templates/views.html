@@ -76,17 +76,25 @@
 
     <table>
       <tr>
-        <th>ID</th>
+        <th>DB ID</th>
+        <th>Ser.</th>
+
         <th>Name</th>
         <th>Age</th>
+        <th>Email</th>
         <th colspan="2">Action</th>
+        <th>OTP</th>
+        <th>Status</th>
+
       </tr>
 
       {% for data in allData %}
       <tr>
-        <td>{{ data.id }}</td>
+        <td>{{data.id}}</td>
+        <td>{{ forloop.counter  }}</td>
         <td>{{ data.user_name }}</td>
         <td>{{ data.user_age }}</td>
+        <td>{{ data.email}}</td>
         <td>
           <a href="{% url 'edit_data' data.id %}" class="edit-btn">Edit</a>
         </td>
@@ -97,6 +105,8 @@
              Delete
           </a>
         </td>
+        <td>{{data.otp}}</td>
+        <td>{{data.status}}</td>
       </tr>
       {% endfor %}
     </table>
