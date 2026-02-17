@@ -13,9 +13,9 @@ class Project(models.Model):
 
 
 class Task(models.Model):
-    project = models.ForeignKey("Project", on_delete=models.CASCADE, default=1)
+    project = models.ForeignKey("Project", on_delete=models.CASCADE, default=1) # one to many
     
-    assigned_to = models.ManyToManyField(Employee)
+    assigned_to = models.ManyToManyField(Employee, related_name='tasks') # many to many 
     
     title = models.CharField(max_length=255)
     description =models.TextField()
@@ -23,7 +23,7 @@ class Task(models.Model):
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+    # 
     
     
 # one to one
@@ -39,7 +39,7 @@ class TaskDetail(models.Model):
         (MEDIUM,"Medium"),
         (LOW, "Low")
     )
-    task = models.OneToOneField(Task, on_delete=models.CASCADE)
+    task = models.OneToOneField(Task, on_delete=models.CASCADE, related_name='details') # one to one
     assigned_to=models.CharField(max_length=110)
     priority= models.CharField(max_length=1, choices=PRIORITY_OPTIONS, default=LOW)
     
