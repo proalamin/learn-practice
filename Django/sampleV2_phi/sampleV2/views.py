@@ -32,15 +32,16 @@ def send_email_otp(u_email, otp,id):
         recipient_list=[u_email],
         fail_silently=False,
     )
+    
+def verify_email_page(req, uid):
+    user = get_object_or_404(User, uid=uid)
+    return render(req, "verify_email_page.html", {"user": user})
 
-def verify_email(req, id):
-    user = get_object_or_404(User, id=id)
-    return render(req, "verify.html", {"user": user})
+def verify_otp(req, uid):
+    user = get_object_or_404(User, uid=uid)
 
-def verify_otp(req, user_id):
     if req.method == "POST":
         input_otp = req.POST.get("otp")
-        user = get_object_or_404(User, id=user_id)
 
         if str(user.otp) == str(input_otp):
             user.status = True
@@ -59,7 +60,7 @@ def insert_data(req):
     
     store_user_data=User(user_name=name, user_age=age, email=email, otp=otp)
     store_user_data.save()
-    id=store_user_data.id
+    id=store_user_data.uid
     send_email_otp(email, otp, id)
 
     

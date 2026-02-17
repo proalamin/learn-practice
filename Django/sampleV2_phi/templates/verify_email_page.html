@@ -1,7 +1,8 @@
-<h2>Verify Email for {{ user.user_name }}</h2>
+<h2>Hey {{ user.user_name }}, please enter your receive otp</h2>
 
-<form method="POST" action="/verify_otp/{{ user.id }}/">
+<form method="POST" action="{% url 'verify_otp' user.uid %}">
     {% csrf_token %}
     <input type="text" name="otp" placeholder="Enter OTP">
     <button type="submit">Verify</button>
 </form>
+
