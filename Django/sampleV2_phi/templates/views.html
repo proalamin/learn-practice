@@ -105,7 +105,12 @@
           </a>
         </td>
         <td>{{data.otp}}</td>
-        <td>{{data.status}}</td>
+        {% if data.status %}
+          <td style="color:green;">Verified</td>
+          {% else %}
+          <td style="color:red;">Not Verified</td>
+        {% endif %}
+        
       </tr>
       {% endfor %}
     </table>
