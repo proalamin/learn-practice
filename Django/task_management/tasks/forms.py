@@ -17,31 +17,61 @@ class TaskForm(forms.Form):
         self.fields['assigned_to'].choices = [
             (emp.id, emp.name) for emp in employees]
 
-        
+
+
+class StyleFormMixin:
+    """
+    Mixin to apply Tailwind styling automatically
+    """
+
+    default_classes = (
+        "w-full border border-gray-300 rounded-lg p-2 "
+        "focus:outline-none focus:ring-2 focus:ring-rose-500"
+    )
+
+    textarea_classes = default_classes + " h-40"
+
+    checkbox_classes = (
+        "h-4 w-4 text-rose-600 border-gray-300 rounded "
+        "focus:ring-rose-500"
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field_name, field in self.fields.items():
+
+            if isinstance(field.widget, forms.Textarea):
+                field.widget.attrs.update({
+                    "class": self.textarea_classes,
+                    "placeholder": f"Enter {field.label.lower()}"
+                })
+
+            elif isinstance(field.widget, forms.CheckboxSelectMultiple):
+                field.widget.attrs.update({
+                    "class": self.checkbox_classes
+                })
+
+            elif isinstance(field.widget, forms.SelectDateWidget):
+                field.widget.attrs.update({
+                    "class": self.default_classes
+                })
+
+            else:
+                field.widget.attrs.update({
+                    "class": self.default_classes,
+                    "placeholder": f"Enter {field.label.lower()}"
+                })
+
+
     
 # Django model form
-
-class TaskModelForm(forms.ModelForm):
+class TaskModelForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'due_date', 'assigned_to']
-        # exclude= ['project', 'is_completed', 'created_at', "updated_at", ]
+
         widgets = {
-            'title': forms.TextInput(attrs={
-                'class': 'w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-rose-500',
-                'placeholder': 'Enter task title'
-            }),
-
-            'description': forms.Textarea(attrs={
-                'class': 'w-full border border-gray-300 rounded-lg p-2 h-40 focus:outline-none focus:ring-2 focus:ring-rose-500',
-                'placeholder': 'Describe the task'
-            }),
-
-            'due_date': forms.SelectDateWidget(attrs={
-                'class': 'border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-rose-500'
-            }),
-
-            'assigned_to': forms.CheckboxSelectMultiple(attrs={
-                'class': 'h-4 w-4 text-rose-600 border-gray-300 rounded focus:ring-rose-500'
-            }),
+            'due_date': forms.SelectDateWidget(),
+            'assigned_to': forms.CheckboxSelectMultiple(),
         }
