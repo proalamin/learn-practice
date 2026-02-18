@@ -14,3 +14,8 @@ def test(request):
         'names': ['john', 'abdul', 'Hamid']
     }
     return render(request, 'test.html', data)
+
+
+
+def create_task(req):
+    return render(req, "test_form.html")
