@@ -37,3 +37,20 @@ def create_task(request):
     }
 
     return render(request, "test_form.html", context)
+
+
+def view_task(req):
+    # retrieve all data from task model
+    tasks = Task.objects.all()
+    
+    # retrieve a specific task
+    task_3 = Task.objects.get(pk=2)
+    
+    # retrieve a specific task
+    first_task = Task.objects.first()
+    
+    
+    return render(req, 'show_task.html', 
+                  {"tasks": tasks, "task_3": task_3, "first_task": first_task}
+    )
+    # return HttpResponse("ok")
