@@ -6,7 +6,7 @@
     <title>show_task</title>
 </head>
 <body>
-    <div>
+    <!-- <div>
         <ul>
 
             {% for task in tasks %}
@@ -22,6 +22,18 @@
     </div>
     <div>
         {{first_task}}
+    </div> -->
+
+
+    <div>
+        <ul>
+            {% for pending_task in words_or %}
+                <li>
+                    <p>{{pending_task.title}}</p>
+                    <span>{{pending_task.status}}</span>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
