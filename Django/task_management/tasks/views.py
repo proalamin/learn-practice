@@ -55,21 +55,24 @@ def view_task(req):
     # return render(req, 'show_task.html', {"tasks": tasks, "task_3": task_3, "first_task": first_task})
     # return HttpResponse("ok")
     
-    pending_tasks= Task.objects.filter(status = "PENDING")
+    # pending_tasks= Task.objects.filter(status = "PENDING")
     
     # show the task which due date today
-    due_date_today= Task.objects.filter(due_date= date.today())
+    # due_date_today= Task.objects.filter(due_date= date.today())
     
     # show the task which priority is not low
-    priority_not_low= TaskDetail.objects.exclude(priority = 'L')
+    # priority_not_low= TaskDetail.objects.exclude(priority = 'L')
     
     # show the task that contain word c and status PENDING""
-    words= Task.objects.filter(title__icontains = 'c', status= 'PENDING')
+    # words= Task.objects.filter(title__icontains = 'c', status= 'PENDING')
     
     # show the task that contain word c OR status PENDING""
-    words_or= Task.objects.filter(Q(title__icontains = 'c') | Q(status= 'PENDING'))
+    # words_or= Task.objects.filter(Q(title__icontains = 'c') | Q(status= 'PENDING'))
         
-    return render(req, 'show_task.html', {'pending_tasks': pending_tasks, 'due_date_today':due_date_today, "priority_not_low": priority_not_low, 'words': words, "words_or": words_or})
+    # return render(req, 'show_task.html', {'pending_tasks': pending_tasks, 'due_date_today':due_date_today, "priority_not_low": priority_not_low, 'words': words, "words_or": words_or})
     
-    
-    
+    # select related(ForeignKey, OneToOneFiled)
+    # tasks = Task.objects.select_related('details').all()
+    tasks = TaskDetail.objects.select_related('task').all()
+
+    return render(req, 'show_task.html', {'tasks': tasks})

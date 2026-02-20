@@ -24,16 +24,17 @@
         {{first_task}}
     </div> -->
 
+    <h1>Show Data here-</h1>
 
     <div>
-        <ul>
-            {% for pending_task in words_or %}
+        <ol>
+            {% for task in tasks %}
                 <li>
-                    <p>{{pending_task.title}}</p>
-                    <span>{{pending_task.status}}</span>
+                    <p>{{task.task.title}}</p>
+                    <span>{{task.priority}}</span>
                 </li>
             {% endfor %}
-        </ul>
+        </ol>
     </div>
 </body>
 </html>
