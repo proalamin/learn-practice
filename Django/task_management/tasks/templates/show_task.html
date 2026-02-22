@@ -37,14 +37,16 @@
                 </li>
             {% endfor %} {% endcomment %}
 
-            {% for task in tasks %}
+            {% comment %} {% for task in tasks %}
                 <li>
                     <p>{{task.title}}</p>
                     {% for emp in task.assigned_to.all %}
                         <p>{{emp.name}}</p>
                     {% endfor %}
                 </li>
-            {% endfor %}
+            {% endfor %} {% endcomment %}
+
+            <p>{{task_count.num_task}}</p>
         </ol>
     </div>
 </body>

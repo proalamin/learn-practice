@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from tasks.forms import TaskForm, TaskModelForm
 from tasks.models import Employee, Task, TaskDetail, Project
 from datetime import date
-from django.db.models import Q
+from django.db.models import Q, Count, Max, Min, Avg
 
 def manager_dashboard(request):
     return render(request, 'dashboard/manager_dashboard.html')
@@ -80,6 +80,11 @@ def view_task(req):
     
     """prefetch_related (reverse Foreignkey, manytomany) """
     # tasks = Project.objects.prefetch_related('task_set').all()
-    tasks = Task.objects.prefetch_related('assigned_to').all()
+    # tasks = Task.objects.prefetch_related('assigned_to').all()
+    # return render(req, 'show_task.html', {'tasks': tasks})
     
-    return render(req, 'show_task.html', {'tasks': tasks})
+    # task count
+    task_count = Task.objects.aggregate(num_task=Count('id'))
+    return render(req, 'show_task.html', {'task_count': task_count})
+    
+    
