@@ -84,7 +84,10 @@ def view_task(req):
     # return render(req, 'show_task.html', {'tasks': tasks})
     
     # task count
-    task_count = Task.objects.aggregate(num_task=Count('id'))
-    return render(req, 'show_task.html', {'task_count': task_count})
+    # task_count = Task.objects.aggregate(num_task=Count('id'))
+    # return render(req, 'show_task.html', {'task_count': task_count})
+    
+    projects = Project.objects.annotate(num_task = Count('id')).order_by('num_task')
+    return render(req, 'show_task.html', {'projects': projects})
     
     

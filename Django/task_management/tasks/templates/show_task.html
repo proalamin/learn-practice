@@ -46,7 +46,16 @@
                 </li>
             {% endfor %} {% endcomment %}
 
-            <p>{{task_count.num_task}}</p>
+            {% comment %} <p>{{task_count}}</p> {% endcomment %}
+
+            {% for project in projects %}
+            
+                <li>
+                    <p>{{project.name}}</p>
+                    <p>{{project.num_task}}</p>
+                </li>
+
+            {% endfor %}
         </ol>
     </div>
 </body>
