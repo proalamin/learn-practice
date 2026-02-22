@@ -28,10 +28,21 @@
 
     <div>
         <ol>
+            {% comment %} {% for project in tasks %}
+                <li>
+                    <p>{{project.name}}</p>
+                    {% for task in project.task_set.all %}
+                        <p>{{task.title}}</p>
+                    {% endfor %}
+                </li>
+            {% endfor %} {% endcomment %}
+
             {% for task in tasks %}
                 <li>
                     <p>{{task.title}}</p>
-                    <span>{{task.project.name}}</span>
+                    {% for emp in task.assigned_to.all %}
+                        <p>{{emp.name}}</p>
+                    {% endfor %}
                 </li>
             {% endfor %}
         </ol>

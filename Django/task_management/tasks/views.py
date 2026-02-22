@@ -76,9 +76,10 @@ def view_task(req):
     # tasks = TaskDetail.objects.select_related('task').all()
     
     # foreignkey one one way 
-    tasks = Task.objects.select_related('project').all()
+    # tasks = Task.objects.select_related('project').all()
     
     """prefetch_related (reverse Foreignkey, manytomany) """
-    # tasks = Project.objects.prefetch_related('task_set').alast()
+    # tasks = Project.objects.prefetch_related('task_set').all()
+    tasks = Task.objects.prefetch_related('assigned_to').all()
     
     return render(req, 'show_task.html', {'tasks': tasks})
