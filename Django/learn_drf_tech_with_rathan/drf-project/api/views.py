@@ -25,7 +25,7 @@ def studentsView(req):
 
 
 # get a single student and edit student data
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def studentDetailsView(request, pk):
     try:
         student = Student.objects.get(pk=pk)
@@ -45,3 +45,7 @@ def studentDetailsView(request, pk):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        student.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
