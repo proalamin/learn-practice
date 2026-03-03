@@ -1,0 +1,38 @@
+.countries-section {
+  margin: 1.5rem 0 2.5rem;
+  padding: 0.5rem;
+}
+
+.countries-title {
+  margin: 0 0 1.25rem;
+  padding-left: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #196cf3;
+}
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  .countries-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .countries-section {
+    padding: 0;
+  }
+
+  .countries-title {
+    font-size: 1.25rem;
+  }
+
+  .countries-grid {
+    grid-template-columns: 1fr;
+  }
+}
