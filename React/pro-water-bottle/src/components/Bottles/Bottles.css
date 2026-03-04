@@ -1,0 +1,14 @@
+.bottles {
+  margin-top: 1.5rem;
+}
+
+.bottles-title {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.bottles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}

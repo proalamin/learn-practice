@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "AquaPure Bottle",
+    "brand": "AquaPure",
+    "capacity": "1L",
+    "material": "Stainless Steel",
+    "weight": "300g",
+    "usageDuration": "5 years",
+    "waterType": "Hot & Cold",
+    "color": "Silver",
+    "price": 12.99,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8"
+  },
+  {
+    "id": 2,
+    "name": "HydroMax Bottle",
+    "brand": "HydroMax",
+    "capacity": "750ml",
+    "material": "Plastic",
+    "weight": "180g",
+    "usageDuration": "2 years",
+    "waterType": "Cold Only",
+    "color": "Blue",
+    "price": 9.5,
+    "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952"
+  },
+  {
+    "id": 3,
+    "name": "EcoSip Bottle",
+    "brand": "EcoSip",
+    "capacity": "1.5L",
+    "material": "Glass",
+    "weight": "450g",
+    "usageDuration": "4 years",
+    "waterType": "Hot & Cold",
+    "color": "Transparent",
+    "price": 15.0,
+    "image": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e"
+  },
+  {
+    "id": 4,
+    "name": "ChillMate Bottle",
+    "brand": "ChillMate",
+    "capacity": "1L",
+    "material": "Aluminum",
+    "weight": "260g",
+    "usageDuration": "3 years",
+    "waterType": "Cold Only",
+    "color": "Black",
+    "price": 13.75,
+    "image": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d"
+  },
+  {
+    "id": 5,
+    "name": "PureFlow Bottle",
+    "brand": "PureFlow",
+    "capacity": "2L",
+    "material": "BPA-Free Plastic",
+    "weight": "320g",
+    "usageDuration": "3 years",
+    "waterType": "Cold & Warm",
+    "color": "Green",
+    "price": 11.2,
+    "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859"
+  }
+]
