@@ -2,6 +2,8 @@
 import { Suspense } from 'react'
 import './App.css'
 import Bottles from './components/Bottles/Bottles'
+// import Test from './components/Test/Test'
+
 
 const bottlesPromise= fetch('../public/bottles.json')
   .then(res => res.json())
@@ -26,6 +28,7 @@ function App() {
       <Suspense fallback={<h3>Bottles are comming.....</h3>}>
         <Bottles bottlesPromise={bottlesPromise}></Bottles>
       </Suspense>
+
       
     </>
   )

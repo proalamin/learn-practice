@@ -1,7 +1,7 @@
 import React from 'react';
 import './Bottle.css';
 
-const Bottle = ({ bottle }) => {
+const Bottle = ({ bottle, handleAddToCart }) => {
     const { name, brand, capacity, color, material, weight, usageDuration, waterType, price, image } = bottle;
     const colorMap = {
         Silver: '#b7bcc6',
@@ -46,7 +46,7 @@ const Bottle = ({ bottle }) => {
                     <span>Price</span>
                     <strong>${price.toFixed(2)}</strong>
                 </p>
-                <button className="buy-btn" type="button">Buy Now</button>
+                <button onClick={() => handleAddToCart(bottle)} className="buy-btn" type="button">Buy Now</button>
             </div>
         </div>
     );
