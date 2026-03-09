@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Player = ({ player }) => {
   const { name, image, country, role, battingStyle, price } = player;
+
+  const [isSelected, setSelected]= useState(false);
+
 
   return (
     <div className="card bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200">
@@ -28,8 +31,8 @@ const Player = ({ player }) => {
         </div>
         <div className="flex items-center justify-between mt-2">
           <p className="font-bold">Price: ${price}</p>
-          <button className="btn btn-sm rounded-lg btn-outline border-gray-300 text-gray-700 hover:bg-[#84B179] hover:text-white hover:border-[#84B179]">
-            Choose Player
+          <button disabled={isSelected} onClick={()=>setSelected(true)} className={` btn btn-sm rounded-lg btn-outline border-gray-300 text-gray-700 hover:bg-[#84B179] hover:text-white hover:border-[#84B179] ${isSelected===true? 'text-white bg-[#84B179]':''}`}>
+            {isSelected===true? 'Selected': 'Choose Player'}
           </button>
         </div>
       </div>
