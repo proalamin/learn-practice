@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Virat Kohli",
+    "image": "https://www.wisden.com/static-assets/images/players/3993.png?v=23.77",
+    "country": "India",
+    "role": "All-Rounder",
+    "rating": 9.5,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1500000
+  },
+  {
+    "id": 2,
+    "name": "Shakib Al Hasan",
+    "image": "https://cskvskkr.in/wp-content/uploads/2024/10/shakib-al-hassan.jpeg",
+    "country": "Bangladesh",
+    "role": "All-Rounder",
+    "rating": 8.8,
+    "battingStyle": "Left-Hand-Bat",
+    "price": 1200000
+  },
+  {
+    "id": 3,
+    "name": "Joe Root",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ALgbuCsMaFiSNMJtEzre42dwQ4PZ7c8Tfw&s",
+    "country": "England",
+    "role": "Batsman",
+    "rating": 9.0,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1300000
+  },
+  {
+    "id": 4,
+    "name": "Pat Cummins",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMZii_O2C6AOpfFaHJql97rLKXxxD4N3x-kw&s",
+    "country": "Australia",
+    "role": "Bowler",
+    "rating": 9.2,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1400000
+  },
+  {
+    "id": 5,
+    "name": "Kane Williamson",
+    "image": "https://bdcrictime.com/_next/image?url=https%3A%2F%2Fapi.bdcrictime.com%2FProfile%2Fkane-williamson-12_10_2023.jpg&w=384&q=75",
+    "country": "New Zealand",
+    "role": "Batsman",
+    "rating": 9.1,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1350000
+  },
+  {
+    "id": 6,
+    "name": "Babar Azam",
+    "image": "https://i.ibb.co.com/qp8DVkN/babar.jpg",
+    "country": "Pakistan",
+    "role": "Batsman",
+    "rating": 9.3,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1450000
+  },
+  {
+    "id": 7,
+    "name": "Rashid Khan",
+    "image": "https://i.ibb.co.com/F3C4pXw/rashid.jpg",
+    "country": "Afghanistan",
+    "role": "Bowler",
+    "rating": 8.9,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1100000
+  },
+  {
+    "id": 8,
+    "name": "Quinton de Kock",
+    "image": "https://i.ibb.co.com/bRxPkN0/dekock.jpg",
+    "country": "South Africa",
+    "role": "Wicket-Keeper",
+    "rating": 8.7,
+    "battingStyle": "Left-Hand-Bat",
+    "price": 1250000
+  },
+  {
+    "id": 9,
+    "name": "Jasprit Bumrah",
+    "image": "https://i.ibb.co.com/WpMy0ZJ/bumrah.jpg",
+    "country": "India",
+    "role": "Bowler",
+    "rating": 9.4,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1550000
+  },
+  {
+    "id": 10,
+    "name": "David Warner",
+    "image": "https://i.ibb.co.com/QfRwJHb/warner.jpg",
+    "country": "Australia",
+    "role": "Batsman",
+    "rating": 8.6,
+    "battingStyle": "Left-Hand-Bat",
+    "price": 1150000
+  },
+  {
+    "id": 11,
+    "name": "Trent Boult",
+    "image": "https://i.ibb.co.com/VpZdrY7/boult.jpg",
+    "country": "New Zealand",
+    "role": "Bowler",
+    "rating": 8.5,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1050000
+  },
+  {
+    "id": 12,
+    "name": "Andre Russell",
+    "image": "https://i.ibb.co.com/3BWxK9b/russell.jpg",
+    "country": "West Indies",
+    "role": "All-Rounder",
+    "rating": 8.8,
+    "battingStyle": "Right-Hand-Bat",
+    "price": 1300000
+  }
+]
