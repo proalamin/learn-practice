@@ -11,7 +11,15 @@ from product.models import Category, Product
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model= Category
-        fields= ['id', 'name', 'description']
+        fields= ['id', 'name', 'description', 'product_Count']
+        
+    product_Count = serializers.IntegerField(read_only=True)
+        
+    # product_Count = serializers.SerializerMethodField(method_name='productCount')
+        
+    # def productCount(self, category):
+    #     count = Product.objects.filter(category=category).count()
+    #     return count
 
 
 # class ProductSerializers(serializers.Serializer):
@@ -43,11 +51,20 @@ class ProductSerializers(serializers.ModelSerializer):
         method_name='cal_tax'
     )
     
-    category = serializers.HyperlinkedRelatedField(
-        queryset= Category.objects.all(),
-        view_name = 'specific-category',
-    )
+    # category = serializers.HyperlinkedRelatedField(
+    #     queryset= Category.objects.all(),
+    #     view_name = 'specific-category',
+    # )
     
     
     def cal_tax(self, product):
         return round(product.price * Decimal(1.1), 2)
+    
+    
+    def validate_price(self, price):
+        if price < 0:
+            raise serializers.ValidationError("Price cloud not be negative")
+        return price
+    
+    
+    

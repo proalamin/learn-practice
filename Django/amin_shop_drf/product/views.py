@@ -5,13 +5,25 @@ from rest_framework.response import Response
 from rest_framework import status
 from product.models import Product, Category
 from product.serializers import ProductSerializers, CategorySerializer
+from django.db.models import Count
 
-@api_view()
+@api_view(['GET', 'POST'])
 def view_products(request):
-    products = Product.objects.select_related('category').all()
-    serializer= ProductSerializers(products, many=True, context={'request': request})
+    if request.method == 'GET':
+        products = Product.objects.select_related('category').all()
+        serializer= ProductSerializers(products, many=True, context={'request': request})
+        
+        return Response(serializer.data)
     
-    return Response(serializer.data)
+    if request.method == 'POST':
+        serializer = ProductSerializers(data=request.data)  # Deserializer
+        if serializer.is_valid():
+            print(serializer.validated_data)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
 
 
 @api_view()
@@ -23,13 +35,30 @@ def view_specific_products(request, id):
         return Response(serializer.data)
 
 
-@api_view()
+@api_view(['GET', 'POST'])
 def view_categories(request):
-    # return Response({"msg": "view_categories"})
-    category = Category.objects.all()
-    serializer= CategorySerializer(category, many=True)
+    if request.method == 'GET':
+        # return Response({"msg": "view_categories"})
+        # category = Category.objects.all()
+        category = Category.objects.annotate(product_Count=Count('products'))
+        serializer= CategorySerializer(category, many=True)
+        
+        return Response(serializer.data)
     
-    return Response(serializer.data)
+    if request.method == 'POST':
+        serializer=CategorySerializer(data=request.data)
+        
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # else:
+        #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        
 
 
 @api_view()
