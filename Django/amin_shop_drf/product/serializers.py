@@ -18,7 +18,11 @@ class ProductSerializers(serializers.Serializer):
     # category= serializers.PrimaryKeyRelatedField(
     #     queryset= Category.objects.all()
     # )
-    category = CategorySerializer()
+    # category = CategorySerializer()
+    category = serializers.HyperlinkedRelatedField(
+        queryset= Category.objects.all(),
+        view_name = 'specific-category',
+    )
     
     def cal_tax(self, product):
         return round(product.price * Decimal(1.1), 2)

@@ -9,7 +9,7 @@ from product.serializers import ProductSerializers, CategorySerializer
 @api_view()
 def view_products(request):
     products = Product.objects.select_related('category').all()
-    serializer= ProductSerializers(products, many=True)
+    serializer= ProductSerializers(products, many=True, context={'request': request})
     
     return Response(serializer.data)
 
@@ -26,9 +26,14 @@ def view_specific_products(request, id):
 @api_view()
 def view_categories(request):
     # return Response({"msg": "view_categories"})
-    products = Category.objects.all()
-    serializer= CategorySerializer(products, many=True)
+    category = Category.objects.all()
+    serializer= CategorySerializer(category, many=True)
     
     return Response(serializer.data)
 
 
+@api_view()
+def view_specific_categories(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    serializer= CategorySerializer(category)
+    return Response(serializer.data)
