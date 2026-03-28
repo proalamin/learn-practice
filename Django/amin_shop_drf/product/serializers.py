@@ -67,4 +67,11 @@ class ProductSerializers(serializers.ModelSerializer):
         return price
     
     
+    # def create(self, validated_data):
+    #     product = Product(**validated_data)
+    #     product.other = 1
+    #     product.save()
+    #     return product
+    
+    
     
