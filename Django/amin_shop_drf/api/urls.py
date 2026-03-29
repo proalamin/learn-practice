@@ -1,6 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter, DefaultRouter
-from product.views import ProductViewSet, CategoryViewSets
+from product.views import ProductViewSet, CategoryViewSets, ReviewViewSet
+from rest_framework_nested import routers
+
 
 # urlpatterns = [
 #     path('products/', include('product.product_urls')),
@@ -8,17 +10,17 @@ from product.views import ProductViewSet, CategoryViewSets
     
 # ] 
 
-router = DefaultRouter()
+router = routers.DefaultRouter()
 router.register('products', ProductViewSet)
 router.register('categories', CategoryViewSets)
 
 # urlpatterns = router.urls
 
+product_router = routers.NestedDefaultRouter(router, 'products', lookup = 'product')
+product_router.register('reviews', ReviewViewSet, basename= 'product-review')
 
-# router and others url want ot use
 urlpatterns=[
     path('', include(router.urls)),
-    # have more paths
-    #path ('simple/', .....)
+    path('', include(product_router.urls))
 ]
 

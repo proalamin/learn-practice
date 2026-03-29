@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from product.models import Product, Category
-from product.serializers import ProductSerializers, CategorySerializer
+from product.models import Product, Category, Review
+from product.serializers import ProductSerializers, CategorySerializer, ReviewSerializer
 from django.db.models import Count
 
 from rest_framework.views import APIView
@@ -208,3 +208,14 @@ class CategoryDetails(RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.annotate(product_Count=Count('products')).all()
     serializer_class= CategorySerializer
     lookup_field = 'id'
+    
+
+class ReviewViewSet(ModelViewSet):
+    serializer_class = ReviewSerializer
+    
+    def get_queryset(self):
+        return Review.objects.filter(product_id=self.kwargs['product_pk'])
+
+    
+    def get_serializer_context(self):
+        return {'product_id': self.kwargs['product_pk']}
