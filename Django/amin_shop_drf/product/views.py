@@ -11,7 +11,9 @@ from rest_framework.views import APIView
 from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.viewsets import ModelViewSet
+from django_filters.rest_framework import DjangoFilterBackend
 
+from product.filters import ProductFilter
 
 @api_view(['GET', 'POST'])
 def view_products(request):
@@ -65,15 +67,27 @@ class ProductList(ListCreateAPIView):
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class= ProductSerializers
+    filter_backends=[DjangoFilterBackend]
+    # filterset_fields= ['category_id', 'price']
+    filterset_class = ProductFilter
     
+    # manual filter
+    # def get_queryset(self):
+    #     queryset = Product.objects.all()
+    #     category_id = self.request.query_params.get('category_id')
+
+    #     if category_id is not None:
+    #         queryset = Product.objects.filter(category_id=category_id)
+    #     return queryset
+    
+        
     def destroy(self, request, *args, **kwargs):
         product= self.get_object()
         if product.stock > 0:
             return Response({'msg': 'Product with stock more than 0 could not deleted'})
         self.perform_destroy(product)
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
+    
 
  
 @api_view(['GET', 'PUT', 'DELETE'])
