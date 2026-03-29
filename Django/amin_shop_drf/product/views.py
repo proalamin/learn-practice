@@ -123,7 +123,25 @@ def view_specific_categories(request, pk):
     return Response(serializer.data)
 
 class ViewSpecific_categories(APIView):
-    def get(self, request, pk):
-        category = get_object_or_404(Category, pk=pk)
+    def get(self, request, id):
+        category = get_object_or_404(
+            Category.objects.annotate(product_Count=Count('products')).all(), pk=id
+        )
         serializer= CategorySerializer(category)
         return Response(serializer.data)
+    
+    def put(self, request, id):
+        category = get_object_or_404(
+            Category.objects.annotate(product_Count=Count('products')).all(), pk=id
+        )
+        serializer= CategorySerializer(category, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+    def delete(self, request, id):
+        category = get_object_or_404(
+            Category.objects.annotate(product_Count=Count('products')).all(), pk=id
+        )
+        category.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
