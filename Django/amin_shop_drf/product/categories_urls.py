@@ -7,7 +7,8 @@ urlpatterns = [
     path('', views.CategoryList.as_view(), name='category-list'),
     
     # path('<int:pk>', views.view_specific_categories, name='specific-category'),
-    path('<int:id>', views.ViewSpecific_categories.as_view(), name='specific-category')
+    # path('<int:id>', views.ViewSpecific_categories.as_view(), name='specific-category'),
+    path('<int:id>', views.CategoryDetails.as_view(), name='specific-category'),
     
     
 ]

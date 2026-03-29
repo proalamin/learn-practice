@@ -9,7 +9,7 @@ from django.db.models import Count
 
 from rest_framework.views import APIView
 from rest_framework.mixins import CreateModelMixin, ListModelMixin
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 @api_view(['GET', 'POST'])
@@ -95,6 +95,20 @@ class ViewSpecificProduct(APIView):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+# Generic views
+class ProductDetails(RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class= ProductSerializers
+    lookup_field = 'id'
+    
+    def delete(self, request, id):
+        product = get_object_or_404(Product, pk=id)
+        if product.stock > 0:
+            return Response({'msg': 'Product with stock more than 10 could not deleted'})
+        product.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 @api_view(['GET', 'POST'])
 def view_categories(request):
     if request.method == 'GET':
@@ -164,3 +178,9 @@ class ViewSpecific_categories(APIView):
         )
         category.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+# Generic views
+class CategoryDetails(RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.annotate(product_Count=Count('products')).all()
+    serializer_class= CategorySerializer
+    lookup_field = 'id'
