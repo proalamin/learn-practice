@@ -1,5 +1,5 @@
 from django.urls import path, include
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import SimpleRouter, DefaultRouter
 from product.views import ProductViewSet, CategoryViewSets
 
 # urlpatterns = [
@@ -8,9 +8,17 @@ from product.views import ProductViewSet, CategoryViewSets
     
 # ] 
 
-router = SimpleRouter()
+router = DefaultRouter()
 router.register('products', ProductViewSet)
 router.register('categories', CategoryViewSets)
 
-urlpatterns = router.urls
+# urlpatterns = router.urls
+
+
+# router and others url want ot use
+urlpatterns=[
+    path('', include(router.urls)),
+    # have more paths
+    #path ('simple/', .....)
+]
 
