@@ -8,6 +8,8 @@ from product.serializers import ProductSerializers, CategorySerializer
 from django.db.models import Count
 
 from rest_framework.views import APIView
+from rest_framework.mixins import CreateModelMixin, ListModelMixin
+from rest_framework.generics import ListCreateAPIView
 
 
 @api_view(['GET', 'POST'])
@@ -44,7 +46,19 @@ class ViewProduct(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# Generic views 
+class ProductList(ListCreateAPIView):
+    # serializer_class = ProductSerializers
 
+    # def get_queryset(self):
+    #     return  Product.objects.select_related('category').all()
+    
+    queryset= Product.objects.select_related('category').all()
+    serializer_class= ProductSerializers
+    
+    # def get_serializer_context(self):
+    #     return {'request': self.request}
+        
 @api_view(['GET', 'PUT', 'DELETE'])
 def view_specific_products(request, id):
     if request.method =='GET':
@@ -115,6 +129,11 @@ class ViewCategories(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+# Generic views
+class CategoryList(ListCreateAPIView):
+    queryset= Category.objects.annotate(product_Count=Count('products'))
+    serializer_class= CategorySerializer
 
 @api_view()
 def view_specific_categories(request, pk):
