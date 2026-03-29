@@ -10,12 +10,13 @@ from django.db.models import Count
 from rest_framework.views import APIView
 from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 
 
 @api_view(['GET', 'POST'])
 def view_products(request):
     if request.method == 'GET':
-        products = Product.objects.select_related('category').all()
+        products = Product.objects.all()
         serializer= ProductSerializers(products, many=True, context={'request': request})
         
         return Response(serializer.data)
@@ -33,7 +34,7 @@ def view_products(request):
 # class based view        
 class ViewProduct(APIView):
     def get(self, request):
-        products = Product.objects.select_related('category').all()
+        products = Product.objects.all()
         serializer= ProductSerializers(products, many=True, context={'request': request})
         return Response(serializer.data)
     
@@ -46,6 +47,7 @@ class ViewProduct(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 # Generic views 
 class ProductList(ListCreateAPIView):
     # serializer_class = ProductSerializers
@@ -53,12 +55,27 @@ class ProductList(ListCreateAPIView):
     # def get_queryset(self):
     #     return  Product.objects.select_related('category').all()
     
-    queryset= Product.objects.select_related('category').all()
+    queryset= Product.objects.all()
     serializer_class= ProductSerializers
     
     # def get_serializer_context(self):
     #     return {'request': self.request}
-        
+
+# Model View set
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class= ProductSerializers
+    
+    def destroy(self, request, *args, **kwargs):
+        product= self.get_object()
+        if product.stock > 0:
+            return Response({'msg': 'Product with stock more than 0 could not deleted'})
+        self.perform_destroy(product)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+ 
 @api_view(['GET', 'PUT', 'DELETE'])
 def view_specific_products(request, id):
     if request.method =='GET':
@@ -77,6 +94,7 @@ def view_specific_products(request, id):
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+# class based views
 class ViewSpecificProduct(APIView):
     def get(self, request, id):
         product = get_object_or_404(Product, pk=id)
@@ -134,7 +152,7 @@ def view_categories(request):
         
 class ViewCategories(APIView):
     def get(self, request):
-        category = Category.objects.annotate(product_Count=Count('products'))
+        category = Category.objects.annotate(product_Count=Count('products')).all()
         serializer= CategorySerializer(category, many=True)
         return Response(serializer.data)
        
@@ -148,6 +166,12 @@ class ViewCategories(APIView):
 class CategoryList(ListCreateAPIView):
     queryset= Category.objects.annotate(product_Count=Count('products'))
     serializer_class= CategorySerializer
+
+# Model View set
+class CategoryViewSets(ModelViewSet):
+    queryset = Category.objects.annotate(product_Count=Count('products')).all()
+    serializer_class = CategorySerializer
+
 
 @api_view()
 def view_specific_categories(request, pk):
