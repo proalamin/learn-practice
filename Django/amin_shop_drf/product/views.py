@@ -14,6 +14,9 @@ from rest_framework.viewsets import ModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
 
 from product.filters import ProductFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
+# from rest_framework.pagination import PageNumberPagination
+from product.paginations import DefaultPagination
 
 @api_view(['GET', 'POST'])
 def view_products(request):
@@ -67,9 +70,12 @@ class ProductList(ListCreateAPIView):
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class= ProductSerializers
-    filter_backends=[DjangoFilterBackend]
+    filter_backends=[DjangoFilterBackend, SearchFilter, OrderingFilter]
     # filterset_fields= ['category_id', 'price']
     filterset_class = ProductFilter
+    pagination_class = DefaultPagination
+    search_fields = ['name', 'description']
+    ordering_fields = ['price', 'stock']
     
     # manual filter
     # def get_queryset(self):
