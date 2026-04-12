@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import SimpleRouter, DefaultRouter
 from product.views import ProductViewSet, CategoryViewSets, ReviewViewSet
 from rest_framework_nested import routers
-
+from order.views import CartViewSet
 
 # urlpatterns = [
 #     path('products/', include('product.product_urls')),
@@ -13,6 +13,7 @@ from rest_framework_nested import routers
 router = routers.DefaultRouter()
 router.register('products', ProductViewSet, basename='products')
 router.register('categories', CategoryViewSets)
+router.register('carts', CartViewSet, basename='carts')
 
 # urlpatterns = router.urls
 
