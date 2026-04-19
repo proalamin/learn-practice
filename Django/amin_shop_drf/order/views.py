@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from order.models import Cart, CartItem
-from order.serializers import CartSerializers, CartItemSerializer, AddCartItemSerializer
+from order.serializers import CartSerializers, CartItemSerializer, AddCartItemSerializer, UpdateCartItemSerializer
 
 # Create your views here.
 class CartViewSet(CreateModelMixin, RetrieveModelMixin, GenericViewSet, DestroyModelMixin):
@@ -11,12 +11,15 @@ class CartViewSet(CreateModelMixin, RetrieveModelMixin, GenericViewSet, DestroyM
     
 
 class CartItemViewSet(ModelViewSet):
+    http_method_names = ['get', 'post', 'patch', 'delete']
     # queryset = CartItem.objects.all()
     # serializer_class = CartItemSerializer
     
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return AddCartItemSerializer
+        elif self.request.method == "PATCH":
+            return UpdateCartItemSerializer
         return CartItemSerializer
         
     def get_serializer_context(self):

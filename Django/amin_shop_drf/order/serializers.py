@@ -34,7 +34,14 @@ class AddCartItemSerializer(serializers.ModelSerializer):
         if not Product.objects.filter(pk=value).exists():
            raise serializers.ValidationError(f'Product with {value} id does not exits') 
         return value 
+
+
+class UpdateCartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = ['quantity']
     
+
 class CartItemSerializer(serializers.ModelSerializer):
     # product = ProductSerializers()
     product = ProductSerializerForCart()
